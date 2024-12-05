@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <Suspense>
-      <div className="">
+      <div className="max-w-6xl mx-auto">
         <RedirectServer />
         <div className="flex flex-col gap-10 max-w-full">
           <div>

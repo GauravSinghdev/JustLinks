@@ -17,9 +17,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import ShinyButton from "./ui/shiny-button";
+import { useSession } from "next-auth/react";
 
 export function DialogDemo() {
   const router = useRouter();
+  const session = useSession();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -78,11 +80,15 @@ export function DialogDemo() {
       {" "}
       {/* Controlled dialog */}
       <DialogTrigger asChild>
-        <ShinyButton>
+        {
+          session.data?.user && (
+            <ShinyButton>
           <div className="flex items-center gap-2">
             Add Link <span className="text-2xl">+</span>
           </div>
         </ShinyButton>
+          )
+        }
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

@@ -7,7 +7,7 @@ import { Redirect } from "@/components/Redirect";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Save links here",
   description: "Save all your important  links"
 };
 

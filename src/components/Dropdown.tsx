@@ -15,6 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { signOut } from "next-auth/react";
 import toast from "react-hot-toast";
 
+
 interface NameProp {
   name: string;
   avatarUrl: string;

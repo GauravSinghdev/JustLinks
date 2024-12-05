@@ -41,17 +41,8 @@ export async function GET() {
         link: true,
       },
     });
+    console.log("Fetched links:", links);
 
-    if (links.length === 0) {
-      return NextResponse.json(
-        {
-          message: "No links found for the user",
-        },
-        { status: 404 }
-      );
-    }
-
-    // Return the list of links if found
     return NextResponse.json(links);
   } catch (err) {
     console.error("Error occurred while fetching links:", err);

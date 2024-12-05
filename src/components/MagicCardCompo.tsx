@@ -91,7 +91,7 @@ export default function MagicCardCompo() {
   }
 
   if (links.length === 0) {
-    return <div className="text-primary text-center">No project added</div>; // Show message when no links are available
+    return <div className="text-primary text-center text-2xl">No links added.</div>; // Show message when no links are available
   }
 
   return (

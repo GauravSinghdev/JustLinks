@@ -4,13 +4,6 @@ import { Input } from "@/components/ui/input";
 import { CheckCircle, Share2, Search } from "lucide-react";
 import { Redirect } from "@/components/Redirect";
 
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Save links here",
-  description: "Save all your important  links"
-};
-
 export default function LandingPage() {
   return (
     <div className="flex flex-col">

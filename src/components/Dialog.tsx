@@ -83,9 +83,21 @@ export function DialogDemo() {
         {
           session.data?.user && (
             <ShinyButton>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             Add Link <span className="text-2xl">+</span>
-          </div>
+          </div> */}
+          <div className="flex items-center gap-2">
+  {/* Desktop or larger screens: Displays 'Add Link' and a plus sign */}
+  <div className="hidden md:flex items-center gap-4">
+    Add Link<span className="text-2xl">+</span>
+  </div>
+
+  {/* Mobile or smaller screens: Displays 'Add' and a plus sign */}
+  <div className="md:hidden flex items-center gap-2">
+    <span className="text-2xl">+</span> Link
+  </div>
+</div>
+
         </ShinyButton>
           )
         }

@@ -8,7 +8,7 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col">
       <Redirect />
-      <main className=" ">
+      <main>
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 lg:h-screen">
           <div className="px-4 py-10 md:py-0 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">

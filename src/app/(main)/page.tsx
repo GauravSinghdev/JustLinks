@@ -29,10 +29,10 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Link href={"http://localhost:3000/api/auth/signin"}>
+                <Link href={"/api/auth/signin"}>
                   <Button>Get Started</Button>
                 </Link>
-                <Link href={"http://localhost:3000/learn-more"}>
+                <Link href={"/learn-more"}>
                   <Button variant="outline">Learn More</Button>
                 </Link>
               </div>

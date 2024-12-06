@@ -56,7 +56,7 @@ export function DropdownMenuCheckboxes({ name, avatarUrl }: NameProp) {
           className="hover:text-red-500 cursor-pointer"
         >
           <LogOut />
-          <span >Log out</span>
+          <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

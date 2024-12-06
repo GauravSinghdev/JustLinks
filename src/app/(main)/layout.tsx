@@ -19,7 +19,9 @@ export default async function Layout({
         </div>
         <Footer />
       </div>
-      <Toaster position="top-center" reverseOrder={false}  toastOptions={{duration: 1500,}} />
+      <Toaster position="bottom-right" reverseOrder={false}  toastOptions={{duration: 1500, style: {
+        padding: '16px'
+      }}}  />
     </Providers>
   );
 }

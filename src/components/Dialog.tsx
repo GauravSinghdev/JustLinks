@@ -80,27 +80,19 @@ export function DialogDemo() {
       {" "}
       {/* Controlled dialog */}
       <DialogTrigger asChild>
-        {
-          session.data?.user && (
-            <ShinyButton>
-          {/* <div className="flex items-center gap-2">
-            Add Link <span className="text-2xl">+</span>
-          </div> */}
-          <div className="flex items-center gap-2">
-  {/* Desktop or larger screens: Displays 'Add Link' and a plus sign */}
-  <div className="hidden md:flex items-center gap-4">
-    Add Link<span className="text-2xl">+</span>
-  </div>
+        {session.data?.user && (
+          <ShinyButton className="">
+            {/* Desktop or larger screens: Displays 'Add Link' and a plus sign */}
+            <div className="hidden md:flex items-center gap-4">
+              Add Link<span className="text-2xl">+</span>
+            </div>
 
-  {/* Mobile or smaller screens: Displays 'Add' and a plus sign */}
-  <div className="md:hidden flex items-center gap-2">
-    <span className="text-2xl">+</span> Link
-  </div>
-</div>
-
-        </ShinyButton>
-          )
-        }
+            {/* Mobile or smaller screens: Displays 'Add' and a plus sign */}
+            <div className="md:hidden flex items-center gap-2">
+              <span className="text-2xl">+</span> Link
+            </div>
+          </ShinyButton>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -146,7 +138,7 @@ export function DialogDemo() {
         </form>
         <DialogFooter>
           <Button type="submit" onClick={handleSubmit}>
-            Save  it
+            Save it
           </Button>
         </DialogFooter>
       </DialogContent>

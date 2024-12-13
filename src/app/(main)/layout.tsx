@@ -20,7 +20,7 @@ export default async function Layout({
         <Footer />
       </div>
       <Toaster position="bottom-right" reverseOrder={false}  toastOptions={{duration: 1500, style: {
-        padding: '16px'
+        padding: '10px'
       }}}  />
     </Providers>
   );

@@ -28,6 +28,7 @@ interface Link {
   description: string;
   link: string;
 }
+import { IoCopyOutline } from "react-icons/io5";
 
 export default function MagicCardCompo() {
   const { theme } = useTheme();
@@ -106,7 +107,15 @@ export default function MagicCardCompo() {
           <div className=" p-10 h-full">
             <h2 className="text-2xl font-semibold mb-2">{link.title}</h2>
             <p className="text-base mb-4 text-wrap">{link.description}</p>
-            <div className="absolute flex bottom-0 right-0 gap-2">
+            <div className="absolute flex bottom-0 right-0 gap-2 items-center">
+            <button title="copy link" onClick={() => {
+              navigator.clipboard.writeText(link.link);
+              toast.success("Link Copied.", {
+                position: "top-center"
+              })
+            }}>
+                <IoCopyOutline className="text-gray-600"/>
+              </button>
               <a
                 href={link.link}
                 className="text-primary hover:text-purple-500 hover:underline"
@@ -140,6 +149,7 @@ export default function MagicCardCompo() {
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
+              
             </div>
           </div>
         </MagicCard>

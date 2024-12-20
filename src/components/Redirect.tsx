@@ -8,7 +8,7 @@ export function Redirect() {
   const session = useSession();
   useEffect(() => {
     if (session.data?.user) {
-      redirect("/dashboard");
+      redirect("/mylinks");
     }
   }, [session]);
 

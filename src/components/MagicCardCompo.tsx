@@ -41,7 +41,7 @@ export default function MagicCardCompo() {
     if(search === 'true'){
       setTimeout(() => {
         toast.success('You are logged in.');
-        redirect("/dashboard")
+        redirect("/mylinks")
       },100);
     }
   },[searchParams])

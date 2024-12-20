@@ -5,8 +5,8 @@ import GoogleProvider from "next-auth/providers/google";
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET ?? "secret",
@@ -43,7 +43,7 @@ const handler = NextAuth({
     },
     async redirect({ baseUrl }) {
       // On successful login, redirect to the dashboard with success=true
-      return `${baseUrl}/dashboard?success=true`; // Adjust the URL if your dashboard route is different
+      return `${baseUrl}/mylinks?success=true`; // Adjust the URL if your dashboard route is different
     },
   },
   pages: {

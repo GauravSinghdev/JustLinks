@@ -12,7 +12,7 @@ export default function Page() {
     <Suspense>
       <div className="max-w-6xl mx-auto">
         <RedirectServer />
-        <div className="flex flex-col gap-10 max-w-full">
+        <div className="flex flex-col gap-10 max-w-full m-2">
           <div>
             <MagicCardCompo />
           </div>

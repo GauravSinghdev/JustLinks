@@ -35,16 +35,16 @@ export default function MagicCardCompo() {
   const [links, setLinks] = useState<Link[]>([]);
   const [loading, setLoading] = useState<boolean>(true); // To manage loading state
   const [error, setError] = useState<string | null>(null); // To manage error state
-  const searchParams = useSearchParams()
-  useEffect(()=> {
-    const search = searchParams.get('success')
-    if(search === 'true'){
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const search = searchParams.get("success");
+    if (search === "true") {
       setTimeout(() => {
-        toast.success('You are logged in.');
-        redirect("/mylinks")
-      },100);
+        toast.success("You are logged in.");
+        redirect("/mylinks");
+      }, 100);
     }
-  },[searchParams])
+  }, [searchParams]);
 
   const fetchLinks = async () => {
     try {
@@ -92,7 +92,9 @@ export default function MagicCardCompo() {
   }
 
   if (links.length === 0) {
-    return <div className="text-primary text-center text-2xl">No links added.</div>; // Show message when no links are available
+    return (
+      <div className="text-primary text-center text-2xl">No links added.</div>
+    ); // Show message when no links are available
   }
 
   return (
@@ -108,13 +110,16 @@ export default function MagicCardCompo() {
             <h2 className="text-2xl font-semibold mb-2">{link.title}</h2>
             <p className="text-base mb-4 text-wrap">{link.description}</p>
             <div className="absolute flex bottom-0 right-0 gap-2 items-center">
-            <button title="copy link" onClick={() => {
-              navigator.clipboard.writeText(link.link);
-              toast.success("Link Copied.", {
-                position: "top-center"
-              })
-            }}>
-                <IoCopyOutline className="text-gray-600"/>
+              <button
+                title="copy link"
+                onClick={() => {
+                  navigator.clipboard.writeText(link.link);
+                  toast.success("Link Copied.", {
+                    position: "top-center",
+                  });
+                }}
+              >
+                <IoCopyOutline className="text-gray-400 hover:text-gray-500" />
               </button>
               <a
                 href={link.link}
@@ -143,13 +148,15 @@ export default function MagicCardCompo() {
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => handleDlt(link.id)}>
+                    <AlertDialogAction
+                      className="bg-red-600 hover:bg-red-800"
+                      onClick={() => handleDlt(link.id)}
+                    >
                       Delete it
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
-              
             </div>
           </div>
         </MagicCard>

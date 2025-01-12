@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Mylinks",
 };
 
-export default function Page() {
+export default function MyLinkPage() {
   return (
     <Suspense>
       <div className="max-w-6xl mx-auto">

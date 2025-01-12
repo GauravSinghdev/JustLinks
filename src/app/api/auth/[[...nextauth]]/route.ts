@@ -27,7 +27,7 @@ const handler = NextAuth({
           await prisma.user.create({
             data: {
               email: user.email,
-              provider: "Google",
+              avatarUrl: user.image,
             },
           });
         } else {
@@ -47,7 +47,7 @@ const handler = NextAuth({
     },
   },
   pages: {
-    signOut: '/', // Redirect to the home page ("/") after sign out
+    signOut: "/", // Redirect to the home page ("/") after sign out
   },
 });
 

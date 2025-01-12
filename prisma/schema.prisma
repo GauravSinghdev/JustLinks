@@ -14,12 +14,11 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  email     String    @unique
+  id        String   @id @default(uuid())
+  email     String   @unique
   name      String?
-  password  String?
-  provider  Providers
-  createdAt DateTime  @default(now())
+  avatarUrl String?
+  createdAt DateTime @default(now())
   links     Link[]
 
   @@map("users")
@@ -34,9 +33,4 @@ model Link {
   user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("links")
-}
-
-enum Providers {
-  Google
-  Credentials
 }

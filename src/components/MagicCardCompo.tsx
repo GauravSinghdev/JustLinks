@@ -22,13 +22,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "./ui/button";
 import { redirect, useSearchParams } from "next/navigation";
+import { DialogEdit } from "./DialogEdit";
 interface Link {
   id: string;
   title: string;
   description: string;
   link: string;
 }
-import { IoCopyOutline } from "react-icons/io5";
+// import { IoCopyOutline } from "react-icons/io5";
 
 export default function MagicCardCompo() {
   const { theme } = useTheme();
@@ -66,21 +67,9 @@ export default function MagicCardCompo() {
     fetchLinks();
   }, []);
 
-  const handleDlt = async (linkId: string) => {
-    toast
-      .promise(axios.delete(`/api/delete-link`, { data: { linkId } }), {
-        loading: "Deleting...",
-        success: <b>Link deleted successfully!</b>,
-        error: <b>Error deleting the link.</b>,
-      })
-      .then(() => {
-        fetchLinks();
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error);
-      });
-  };
+  const handleEdt = async (linkId: string) => {};
+
+  const handleDlt = async (linkId: string) => {};
 
   // Conditional rendering based on state
   if (loading) {
@@ -110,7 +99,13 @@ export default function MagicCardCompo() {
             <h2 className="text-2xl font-semibold mb-2">{link.title}</h2>
             <p className="text-base mb-4 text-wrap">{link.description}</p>
             <div className="absolute flex bottom-0 right-0 gap-2 items-center">
-              <button
+              <DialogEdit
+                id={link.id}
+                title={link.title}
+                description={link.description}
+                url={link.link}
+              />
+              {/* <button
                 title="copy link"
                 onClick={() => {
                   navigator.clipboard.writeText(link.link);
@@ -120,7 +115,7 @@ export default function MagicCardCompo() {
                 }}
               >
                 <IoCopyOutline className="text-gray-400 hover:text-gray-500" />
-              </button>
+              </button> */}
               <a
                 href={link.link}
                 className="text-primary hover:text-purple-500 hover:underline"

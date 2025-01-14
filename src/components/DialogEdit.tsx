@@ -60,9 +60,9 @@ export function DialogEdit({ id, title, description, url }: DialogEditProp) {
 
       toast
         .promise(axios.put("/api/edit-link", payload), {
-            loading: "Editing...",
-            success: <b>Link edited successfully!</b>,
-            error: null
+          loading: "Editing...",
+          success: <b>Link edited successfully!</b>,
+          error: null,
         })
         .then(() => {
           setError(null);
@@ -78,7 +78,9 @@ export function DialogEdit({ id, title, description, url }: DialogEditProp) {
         .catch((error) => {
           toast.error(error.response.data.message);
         });
-    } catch (error) {}
+    } catch (error) {
+      setError("error");
+    }
   };
 
   return (
@@ -93,7 +95,7 @@ export function DialogEdit({ id, title, description, url }: DialogEditProp) {
         <DialogHeader>
           <DialogTitle className="text-center">Edit Link</DialogTitle>
           <DialogDescription className="text-center">
-            Update your link information. Click save when you're done.
+            Update your link information. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>

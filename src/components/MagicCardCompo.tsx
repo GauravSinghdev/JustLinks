@@ -67,7 +67,6 @@ export default function MagicCardCompo() {
     fetchLinks();
   }, []);
 
-  const handleEdt = async (linkId: string) => {};
 
   const handleDlt = async (linkId: string) => {};
 

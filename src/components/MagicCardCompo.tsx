@@ -23,13 +23,13 @@ import {
 import { Button } from "./ui/button";
 import { redirect, useSearchParams } from "next/navigation";
 import { DialogEdit } from "./DialogEdit";
+
 interface Link {
   id: string;
   title: string;
   description: string;
   link: string;
 }
-// import { IoCopyOutline } from "react-icons/io5";
 
 export default function MagicCardCompo() {
   const { theme } = useTheme();
@@ -37,6 +37,7 @@ export default function MagicCardCompo() {
   const [loading, setLoading] = useState<boolean>(true); // To manage loading state
   const [error, setError] = useState<string | null>(null); // To manage error state
   const searchParams = useSearchParams();
+
   useEffect(() => {
     const search = searchParams.get("success");
     if (search === "true") {
@@ -49,11 +50,7 @@ export default function MagicCardCompo() {
 
   const fetchLinks = async () => {
     try {
-      const response = await axios.get("/api/getlinks", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.get("/api/getlinks");
       setLinks(response.data);
     } catch (error) {
       console.log(error);
@@ -67,8 +64,29 @@ export default function MagicCardCompo() {
     fetchLinks();
   }, []);
 
+  // handleDlt function to delete a link
+  const handleDlt = async (linkId: string) => {
+    try {
+      // Make the delete request and handle the promise with toast
+      const response = await toast.promise(
+        axios.delete("/api/delete-link", {
+          data: { linkId },
+        }),
+        {
+          loading: "Deleting...",
+          success: <b>Link deleted successfully!</b>,
+          error: <b>Failed to delete the link</b>,
+        }
+      );
 
-  const handleDlt = async (linkId: string) => {};
+      // After successful deletion, update the state by removing the deleted link
+      if (response.status === 200) {
+        setLinks((prevLinks) => prevLinks.filter((link) => link.id !== linkId));
+      }
+    } catch (error) {
+      toast.error("An error occurred while deleting the link.");
+    }
+  };
 
   // Conditional rendering based on state
   if (loading) {
@@ -104,17 +122,6 @@ export default function MagicCardCompo() {
                 description={link.description}
                 url={link.link}
               />
-              {/* <button
-                title="copy link"
-                onClick={() => {
-                  navigator.clipboard.writeText(link.link);
-                  toast.success("Link Copied.", {
-                    position: "top-center",
-                  });
-                }}
-              >
-                <IoCopyOutline className="text-gray-400 hover:text-gray-500" />
-              </button> */}
               <a
                 href={link.link}
                 className="text-primary hover:text-purple-500 hover:underline"

@@ -79,6 +79,7 @@ export function DialogEdit({ id, title, description, url }: DialogEditProp) {
           toast.error(error.response.data.message);
         });
     } catch (error) {
+      console.log(error);
       setError("error");
     }
   };

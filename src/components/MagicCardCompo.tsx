@@ -84,6 +84,8 @@ export default function MagicCardCompo() {
         setLinks((prevLinks) => prevLinks.filter((link) => link.id !== linkId));
       }
     } catch (error) {
+      console.log(error);
+      setError("error");
       toast.error("An error occurred while deleting the link.");
     }
   };

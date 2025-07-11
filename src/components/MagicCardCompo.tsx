@@ -85,7 +85,6 @@ export default function MagicCardCompo() {
       }
     } catch (error) {
       console.log(error);
-      setError("error");
       toast.error("An error occurred while deleting the link.");
     }
   };
@@ -110,57 +109,60 @@ export default function MagicCardCompo() {
       {links.map((link) => (
         <MagicCard
           key={link.id}
-          className="cursor-pointer flex flex-col shadow-2xl text-2xl bg-white rounded-lg h-fit p-2"
+          className="cursor-pointer shadow-2xl rounded-lg p-2 relative h-[150px]"
           gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
         >
           {/* Render title, description, and link here */}
-          <div className=" p-10 h-full">
-            <h2 className="text-2xl font-semibold mb-2">{link.title}</h2>
-            <p className="text-base mb-4 text-wrap">{link.description}</p>
-            <div className="absolute flex bottom-0 right-0 gap-2 items-center">
-              <DialogEdit
-                id={link.id}
-                title={link.title}
-                description={link.description}
-                url={link.link}
-              />
-              <a
-                href={link.link}
-                className="text-primary hover:text-purple-500 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-                title={link.link}
+          <div className="p-4 flex flex-col">
+            <h2 className="text-xl font-semibold mb-2">{link.title}</h2>
+            <p className="text-base mb-4 text-wrap overflow-hidden line-clamp-2">
+              {link.description}
+            </p>
+          </div>
+          <div className="absolute flex bottom-0 right-0 gap-2 items-center ">
+            <DialogEdit
+              id={link.id}
+              title={link.title}
+              description={link.description}
+              url={link.link}
+            />
+            <a
+              href={link.link}
+              className="text-white hover:text-gray-300 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={link.link}
+            >
+              <LiaExternalLinkAltSolid className="size-8" />
+            </a>
+            <AlertDialog>
+              <AlertDialogTrigger
+                asChild
+                className="bg-transparent hover:bg-transparent hover:scale-125 p-1 transition-all duration-300"
               >
-                <LiaExternalLinkAltSolid className="size-8" />
-              </a>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button variant="outline" title="delete">
-                    <MdDelete className="text-red-600 size-5" />
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      Are you absolutely sure?
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone. This will delete the link
-                      from the database forever.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      className="bg-red-600 hover:bg-red-800"
-                      onClick={() => handleDlt(link.id)}
-                    >
-                      Delete it
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </div>
+                <Button title="delete">
+                  <MdDelete className="text-red-600 size-5" />
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will delete the link from
+                    the database forever.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    className="bg-red-600 hover:bg-red-800"
+                    onClick={() => handleDlt(link.id)}
+                  >
+                    Delete it
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </MagicCard>
       ))}

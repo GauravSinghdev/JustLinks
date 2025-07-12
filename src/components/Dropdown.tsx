@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, Settings, User } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { signOut } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -36,14 +36,14 @@ export function DropdownMenuCheckboxes({ name, avatarUrl }: NameProp) {
           Logged in as <span className="text-primary">@{name.split(" ")[0]}</span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        {/* <DropdownMenuItem>
           <User />
           <span>Profile</span>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Settings />
           <span>Settings</span>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
